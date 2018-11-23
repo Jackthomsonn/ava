@@ -1,0 +1,38 @@
+[
+  {
+    "classifier": "greetings.hello",
+    "answer": "Hey there"
+  },
+  {
+    "classifier": "greetings.hello",
+    "answer": "Hello, how can I help you?"
+  },
+  {
+    "classifier": "greetings.hello",
+    "answer": "Hey buddy"
+  },
+  {
+    "classifier": "greetings.bye",
+    "answer": "Goodbye"
+  },
+  {
+    "classifier": "greetings.bye",
+    "answer": "Have a nice day"
+  },
+  {
+    "classifier": "greetings.bye",
+    "answer": "Speak soon"
+  },
+  {
+    "classifier": "greetings.bye",
+    "answer": "Miss you, have a great day!"
+  },
+  {
+    "classifier": "greetings.question",
+    "answer": "I am good thank you, how are you?"
+  },
+  {
+  "classifier": "greetings.action",
+    "answer": "I have turned your light on"
+  }
+]

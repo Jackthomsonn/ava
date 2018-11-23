@@ -1,0 +1,94 @@
+[
+  {
+    "classifier": "greetings.bye",
+    "greetings": [
+      {
+        "greeting": "Bye",
+        "language:": "en"
+      },
+      {
+        "greeting": "Goodbye",
+        "language:": "en"
+      },
+      {
+        "greeting": "See you",
+        "language:": "en"
+      },
+      {
+        "greeting": "Tara",
+        "language:": "en"
+      },
+      {
+        "greeting": "Fairwell",
+        "language:": "en"
+      },
+      {
+        "greeting": "Night",
+        "language:": "en"
+      },
+      {
+        "greeting": "Speak soon",
+        "language:": "en"
+      }
+    ]
+  },
+  {
+    "classifier": "greetings.hello",
+    "greetings": [
+      {
+        "greeting": "Hello",
+        "language": "en"
+      },
+      {
+        "greeting": "Hi",
+        "language": "en"
+      },
+      {
+        "greeting": "Hey",
+        "language": "en"
+      },
+      {
+        "greeting": "Howdy",
+        "language": "en"
+      },
+      {
+        "greeting": "Greetings",
+        "language": "en"
+      },
+      {
+        "greeting": "Yo",
+        "language": "en"
+      },
+      {
+        "greeting": "Whats up?",
+        "language": "en"
+      },
+      {
+        "greeting": "Hiya",
+        "language": "en"
+      }
+    ]
+  },
+  {
+    "classifier": "greetings.action",
+    "greetings": [
+      {
+        "greeting": "Turn my light on",
+        "language": "en"
+      }
+    ]
+  },
+  {
+    "classifier": "greetings.question",
+    "greetings": [
+      {
+        "greeting": "How are you?",
+        "language": "en"
+      },
+      {
+        "greeting": "Are you okay?",
+        "language": "en"
+      }
+    ]
+  }
+]

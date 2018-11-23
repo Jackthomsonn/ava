@@ -1,0 +1,25 @@
+{
+  "name": "ava",
+  "version": "0.0.0",
+  "description": "The Ava AI assistant",
+  "scripts": {
+    "start": "node src/index",
+    "start:dev": "nodemon src/index",
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "deploy": "tsc && now --docker && now alias",
+    "deploy-remove": "now rm ava-api && npm run deploy"
+  },
+  "author": "Jack Thomson <hello@jackthomson.co.uk> (http://www.jackthomson.co.uk)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "node-nlp": "^2.2.4",
+    "socket.io": "^2.1.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.0",
+    "@types/node": "^10.12.10",
+    "@types/socket.io": "^2.1.0"
+  }
+}
