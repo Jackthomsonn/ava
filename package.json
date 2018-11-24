@@ -7,7 +7,7 @@
     "start:dev": "nodemon src/index",
     "build": "tsc",
     "build:watch": "tsc -w",
-    "deploy": "tsc && now --docker && now alias",
+    "deploy": "now --docker",
     "deploy-remove": "now rm ava-api && npm run deploy"
   },
   "author": "Jack Thomson <hello@jackthomson.co.uk> (http://www.jackthomson.co.uk)",
@@ -16,7 +16,8 @@
     "express": "^4.16.4",
     "moment": "^2.22.2",
     "node-nlp": "^2.2.4",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.1.1",
+    "typescript": "^3.1.6"
   },
   "devDependencies": {
     "@types/express": "^4.16.0",
