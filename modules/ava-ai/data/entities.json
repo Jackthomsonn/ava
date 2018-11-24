@@ -1,0 +1,29 @@
+[
+  {
+    "entity": {
+      "0": "living room light",
+      "1": "living-room light",
+      "2": [
+        "en"
+      ],
+      "3": [
+        "living room light",
+        "living-room light"
+      ]
+    }
+  },
+  {
+    "entity": {
+      "0": "bed room light",
+      "1": "bed-room light",
+      "2": [
+        "en"
+      ],
+      "3": [
+        "bed room light",
+        "bed-room light",
+        "bedroom light"
+      ]
+    }
+  }
+]

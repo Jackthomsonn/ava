@@ -29,6 +29,10 @@
       {
         "greeting": "Speak soon",
         "language:": "en"
+      },
+      {
+        "greeting": "I'm off now",
+        "language": "en"
       }
     ]
   },
@@ -75,6 +79,10 @@
       {
         "greeting": "Turn my light on",
         "language": "en"
+      },
+      {
+        "greeting": "Turn the light on",
+        "language": "en"
       }
     ]
   },
@@ -87,6 +95,27 @@
       },
       {
         "greeting": "Are you okay?",
+        "language": "en"
+      }
+    ]
+  },
+  {
+    "classifier": "greetings.statement",
+    "greetings": [
+      {
+        "greeting": "I am good thank you!",
+        "language": "en"
+      },
+      {
+        "greeting": "I am not too bad",
+        "language": "en"
+      },
+      {
+        "greeting": "Not good",
+        "language": "en"
+      },
+      {
+        "greeting": "So and so",
         "language": "en"
       }
     ]

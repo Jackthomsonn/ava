@@ -1,6 +1,6 @@
 import { INaturalLanguageContract } from '../interfaces/INaturalLanguageProvider';
 import { readFile } from "fs";
-import { join } from 'path';
+import { join } from 'path'
 
 export class DataPrep {
   constructor() { }
@@ -31,7 +31,19 @@ export class DataPrep {
             manager.populateAnswers({ language: 'en', classifier: data.classifier, answer: data.answer })
           })
 
-          resolve()
+          readFile(join(__dirname, '..', 'data', 'entities.json'), {}, (err, data) => {
+            if (err) {
+              reject(err.message)
+            }
+
+            const parsedEntities = JSON.parse(data.toString())
+
+            parsedEntities.forEach(data => {
+              manager.populateEntities(data.entity['0'], data.entity['1'], data.entity['2'], data.entity['3'])
+            })
+
+            resolve()
+          })
         })
       });
     })

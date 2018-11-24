@@ -1,9 +1,13 @@
 export interface INaturalLanguageContract {
-  process(options: any): PromiseLike<any>
+  process(options: any): Promise<any>
 
   populateData(options: any): void
 
   populateAnswers(options: any): void
 
-  feed(): PromiseLike<any>
+  feed(): Promise<any>
+
+  populateEntities(entityOne, entityTwo, entityThree, entityFour): any
+
+  findEntities(message: string): Promise<any>
 }

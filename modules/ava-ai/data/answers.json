@@ -32,7 +32,27 @@
     "answer": "I am good thank you, how are you?"
   },
   {
-  "classifier": "greetings.action",
-    "answer": "I have turned your light on"
+    "classifier": "greetings.statement",
+    "answer": "Thats good to hear"
+  },
+  {
+    "classifier": "greetings.statement",
+    "answer": "Great news!"
+  },
+  {
+    "classifier": "greetings.statement",
+    "answer": "Oh no, whats wrong?"
+  },
+  {
+    "classifier": "greetings.action",
+    "answer": "Okay, that is done"
+  },
+  {
+    "classifier": "greetings.action",
+    "answer": "Of course, I will do that now"
+  },
+  {
+    "classifier": "greetings.action",
+    "answer": "All done"
   }
 ]

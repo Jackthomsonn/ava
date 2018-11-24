@@ -11,7 +11,7 @@ export class SocketService {
       const socketOptions = { io, socket }
 
       this.lightService = new LightService(socketOptions)
-      this.avaAIService = new AvaAIService(new NodeNLPManagerImplementation({ language: 'en' }), socketOptions)
+      this.avaAIService = new AvaAIService(new NodeNLPManagerImplementation({ languages: 'en' }), socketOptions)
 
       socket.on('lights: get all lights', this.lightService.getAllLights)
       socket.on('lights: turn light on', this.lightService.turnLightOn)
