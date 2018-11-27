@@ -1,3 +1,7 @@
-export class PowerService {
-  constructor(private socketOptions: any) { }
+import { ServiceBase } from './../serviceBase'
+
+export class PowerService extends ServiceBase {
+  constructor() {
+    super()
+  }
 }

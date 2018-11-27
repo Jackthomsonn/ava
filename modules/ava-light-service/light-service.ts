@@ -1,10 +1,14 @@
+import { ServiceBase } from "../serviceBase"
+import { ISocketOptions } from "../interfaces/ISocketOptions";
+
 export class LightService {
-  constructor(private socketOptions: any) { }
+  constructor(private socketOptions: ISocketOptions) { }
 
   public getAllLights = () => { }
 
   public turnLightOn = (data) => {
-    this.socketOptions.socket.emit('light turned on', { lightName: `The ${data} was turned on` })
+    console.log('Turned on')
+    this.socketOptions.socket.emit('light turned on', { lightName: `The ${data.subject} was turned on in ${data.location}` })
   }
 
   public turnAllLightsOn = (data) => { }

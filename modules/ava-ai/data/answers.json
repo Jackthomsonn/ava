@@ -1,58 +1,42 @@
 [
   {
-    "classifier": "greetings.hello",
+    "classifier": "greeting",
+    "answer": "Hello there"
+  },
+  {
+    "classifier": "greeting",
+    "answer": "Hi there"
+  },
+  {
+    "classifier": "greeting",
     "answer": "Hey there"
   },
   {
-    "classifier": "greetings.hello",
-    "answer": "Hello, how can I help you?"
+    "classifier": "leave",
+    "answer": "Okay, see you soon"
   },
   {
-    "classifier": "greetings.hello",
-    "answer": "Hey buddy"
+    "classifier": "leave",
+    "answer": "Miss you, I hope to speak again soon"
   },
   {
-    "classifier": "greetings.bye",
-    "answer": "Goodbye"
+    "classifier": "action",
+    "answer": "Sure thing, I have done that for you now"
   },
   {
-    "classifier": "greetings.bye",
-    "answer": "Have a nice day"
+    "classifier": "action",
+    "answer": "Okay, I have done that"
   },
   {
-    "classifier": "greetings.bye",
-    "answer": "Speak soon"
+    "classifier": "action",
+    "answer": "Okay, all done"
   },
   {
-    "classifier": "greetings.bye",
-    "answer": "Miss you, have a great day!"
+    "classifier": "question.feelings",
+    "answer": "I am good thank you for asking"
   },
   {
-    "classifier": "greetings.question",
-    "answer": "I am good thank you, how are you?"
-  },
-  {
-    "classifier": "greetings.statement",
-    "answer": "Thats good to hear"
-  },
-  {
-    "classifier": "greetings.statement",
-    "answer": "Great news!"
-  },
-  {
-    "classifier": "greetings.statement",
-    "answer": "Oh no, whats wrong?"
-  },
-  {
-    "classifier": "greetings.action",
-    "answer": "Okay, that is done"
-  },
-  {
-    "classifier": "greetings.action",
-    "answer": "Of course, I will do that now"
-  },
-  {
-    "classifier": "greetings.action",
-    "answer": "All done"
+    "classifier": "question.feelings",
+    "answer": "I am very well thank you"
   }
 ]

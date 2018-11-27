@@ -4,7 +4,7 @@ import * as io from 'socket.io'
 
 import { SocketService } from './socket'
 
-class AvaAIApi {
+export class AvaAIApi {
   private server: http.Server
   private io: SocketIO.Server
   private app: Express.Application
@@ -29,5 +29,3 @@ class AvaAIApi {
     this.server.listen(8080)
   }
 }
-
-export { AvaAIApi }

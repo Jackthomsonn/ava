@@ -1,13 +1,13 @@
-import { INaturalLanguageContract } from '../interfaces/INaturalLanguageProvider';
-import { NlpManager, NerManager } from 'node-nlp';
+import { INaturalLanguageContract } from '../interfaces/INaturalLanguageProvider'
+import { NlpManager, NerManager } from 'node-nlp'
 
 export class NodeNLPManagerImplementation implements INaturalLanguageContract {
-  private agent;
-  private entityAgent;
+  private agent
+  private entityAgent
 
   constructor(options: any) {
     this.agent = new NlpManager(options)
-    this.entityAgent = new NerManager({ threshhold: 0.8 })
+    this.entityAgent = new NerManager({ threshhold: 1.0 })
   }
 
   public process = (options: any) => {
@@ -15,7 +15,7 @@ export class NodeNLPManagerImplementation implements INaturalLanguageContract {
   }
 
   public populateData = (options: any) => {
-    this.agent.addDocument(options.language, options.greeting, options.classifier)
+    this.agent.addDocument(options.language, options.utterance, options.classifier)
   }
 
   public populateAnswers = (options: any) => {

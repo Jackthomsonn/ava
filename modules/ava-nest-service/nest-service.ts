@@ -1,3 +1,7 @@
-export class NestService {
-  constructor(private socketOptions: any) { }
+import { ServiceBase } from './../serviceBase'
+
+export class NestService extends ServiceBase {
+  constructor() {
+    super()
+  }
 }

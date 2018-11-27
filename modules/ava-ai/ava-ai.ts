@@ -1,17 +1,13 @@
-import { DataPrep } from './providers/dataPrepProvider';
-import { INaturalLanguageContract } from './interfaces/INaturalLanguageProvider';
-import { LightService } from '../ava-light-service/light-service';
+import { DataPrep } from './providers/dataPrepProvider'
+import { INaturalLanguageContract } from './interfaces/INaturalLanguageProvider'
+import { ISocketOptions } from '../interfaces/ISocketOptions';
 
 export class AvaAIService {
-  private lightService: LightService
-
-  constructor(private brain: INaturalLanguageContract, private socketOptions: any) {
+  constructor(private brain: INaturalLanguageContract, private socketOptions: ISocketOptions) {
     this.initialise()
-
-    this.lightService = new LightService(socketOptions)
   }
 
-  private initialise = async (): Promise<any> => {
+  private initialise = async () => {
     try {
       await this.setupData()
       await this.brain.feed()
@@ -20,20 +16,28 @@ export class AvaAIService {
     }
   }
 
-  public analyse = async (data: any) => {
-    const response = await this.brain.process(data)
-    const entity = await this.brain.findEntities(response)
-
-    if (response.utterance.includes('light on') || response.utterance.includes('lights on')) {
-      this.lightService.turnLightOn(entity[0].utteranceText)
-    } else if (response.utterance.includes('light off') || response.utterance.includes('lights off')) {
-      this.lightService.turnLightOff(entity[0].utteranceText)
+  private checkForValidActionEntitities = (response: any, entities: any) => {
+    if (response.intent === "action" && entities.length !== 2) {
+      response.answer = "Sorry, that device doesn't seem to exist in your home"
+    } else if (response.intent === "action" && entities.length >= 2) {
+      this.determineActionToTake(entities)
     }
-
-    this.socketOptions.socket.emit('nlu message', { response: response, entity: entity })
   }
 
-  private setupData = (): Promise<any> => {
-    return new DataPrep().setup(this.brain);
+  private determineActionToTake = (entities: any) => {
+    const [location, subject] = [entities[0].entity, entities[1].entity]
+  }
+
+  public analyse = async (data: any) => {
+    const response = await this.brain.process(data)
+    const entities = await this.brain.findEntities(response)
+
+    this.checkForValidActionEntitities(response, entities)
+
+    this.socketOptions.socket.emit('nlu message', { response, entities })
+  }
+
+  private setupData = () => {
+    return new DataPrep().setup(this.brain)
   }
 }

@@ -1,28 +1,79 @@
 [
   {
     "entity": {
-      "0": "living room light",
-      "1": "living-room light",
+      "0": "living room",
+      "1": "livingroom",
       "2": [
         "en"
       ],
       "3": [
-        "living room light",
-        "living-room light"
+        "living room",
+        "living-room"
       ]
     }
   },
   {
     "entity": {
-      "0": "bed room light",
-      "1": "bed-room light",
+      "0": "hall way",
+      "1": "hallway",
       "2": [
         "en"
       ],
       "3": [
-        "bed room light",
-        "bed-room light",
-        "bedroom light"
+        "hall way",
+        "hallway"
+      ]
+    }
+  },
+  {
+    "entity": {
+      "0": "bed room",
+      "1": "bedroom",
+      "2": [
+        "en"
+      ],
+      "3": [
+        "bed room",
+        "bedroom"
+      ]
+    }
+  },
+  {
+    "entity": {
+      "0": "light",
+      "1": "light",
+      "2": [
+        "en"
+      ],
+      "3": [
+        "light",
+        "light"
+      ]
+    }
+  },
+  {
+    "entity": {
+      "0": "tv",
+      "1": "televsion",
+      "2": [
+        "en"
+      ],
+      "3": [
+        "tv",
+        "television"
+      ]
+    }
+  },
+  {
+    "entity": {
+      "0": "fan",
+      "1": "fan",
+      "2": [
+        "en"
+      ],
+      "3": [
+        "fan",
+        "fan"
       ]
     }
   }
