@@ -1,7 +1,8 @@
-import { ServiceBase } from './../serviceBase'
+import { ISocketOptions } from "../interfaces/ISocketOptions";
+import { ServiceBase } from "./../serviceBase";
 
 export class PowerService extends ServiceBase {
-  constructor() {
-    super()
+  constructor(socketOptions: ISocketOptions) {
+    super(socketOptions);
   }
 }

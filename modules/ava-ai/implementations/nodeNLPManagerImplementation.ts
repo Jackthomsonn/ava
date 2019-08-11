@@ -1,39 +1,39 @@
-import { INaturalLanguageContract } from '../interfaces/INaturalLanguageProvider'
-import { NlpManager, NerManager } from 'node-nlp'
+import { NerManager, NlpManager } from "node-nlp";
+import { INaturalLanguageContract } from "../interfaces/INaturalLanguageProvider";
 
 export class NodeNLPManagerImplementation implements INaturalLanguageContract {
-  private agent
-  private entityAgent
+  private agent: any;
+  private entityAgent: any;
 
   constructor(options: any) {
-    this.agent = new NlpManager(options)
-    this.entityAgent = new NerManager({ threshhold: 1.0 })
+    this.agent = new NlpManager(options);
+    this.entityAgent = new NerManager({ threshhold: 1.0 });
   }
 
   public process = (options: any) => {
-    return this.agent.process(options.language, options.message)
+    return this.agent.process(options.language, options.message);
   }
 
   public populateData = (options: any) => {
-    this.agent.addDocument(options.language, options.utterance, options.classifier)
+    this.agent.addDocument(options.language, options.utterance, options.classifier);
   }
 
   public populateAnswers = (options: any) => {
-    this.agent.addAnswer(options.language, options.classifier, options.answer)
+    this.agent.addAnswer(options.language, options.classifier, options.answer);
   }
 
   public populateEntities = (entityOne, entityTwo, entityThree, entityFour) => {
-    this.entityAgent.addNamedEntityText(entityOne, entityTwo, entityThree, entityFour)
+    this.entityAgent.addNamedEntityText(entityOne, entityTwo, entityThree, entityFour);
   }
 
   public findEntities = (message: any) => {
     return this.entityAgent.findEntities(
       message.utterance,
-      'en'
-    )
+      "en",
+    );
   }
 
   public feed = () => {
-    return this.agent.train()
+    return this.agent.train();
   }
 }

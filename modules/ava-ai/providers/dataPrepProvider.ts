@@ -1,75 +1,84 @@
-import { INaturalLanguageContract } from '../interfaces/INaturalLanguageProvider'
-import { readFile } from "fs"
-import { join } from 'path'
+import { readFile } from "fs";
+import { join } from "path";
+import { INaturalLanguageContract } from "../interfaces/INaturalLanguageProvider";
 
 export class DataPrep {
+  public setup = (manager: INaturalLanguageContract) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        await this.setupClassifications(manager);
+        await this.setupAnswers(manager);
+        await this.setupEntities(manager);
+
+        resolve();
+      } catch (err) {
+        reject(err.message);
+      }
+    });
+  }
+
   private setupClassifications = (manager: INaturalLanguageContract) => {
     return new Promise((resolve, reject) => {
-      readFile(join(__dirname, '..', 'data', 'classifications.json'), {}, (err, data) => {
+      readFile(join(__dirname, "..", "data", "classifications.json"), {}, (err, data) => {
         if (err) {
-          reject(err.message)
+          reject(err.message);
         }
 
-        const parsedData = JSON.parse(data.toString())
+        const parsedData = JSON.parse(data.toString());
 
-        parsedData.forEach((data: any) => {
-          data.utterances.forEach(utterance => {
-            manager.populateData({ language: 'en', utterance: utterance.utterance, classifier: data.classifier })
-          })
-        })
+        parsedData.forEach((classifications: any) => {
+          classifications.utterances.forEach((utterance) => {
+            manager.populateData({
+              classifier: classifications.classifier,
+              language: "en",
+              utterance: utterance.utterance,
+            });
+          });
+        });
 
-        resolve()
-      })
-    })
+        resolve();
+      });
+    });
   }
 
   private setupAnswers = (manager: INaturalLanguageContract) => {
     return new Promise((resolve, reject) => {
-      readFile(join(__dirname, '..', 'data', 'answers.json'), {}, (err, data) => {
+      readFile(join(__dirname, "..", "data", "answers.json"), {}, (err, data) => {
         if (err) {
-          reject(err.message)
+          reject(err.message);
         }
 
-        const parsedAnswers = JSON.parse(data.toString())
+        const parsedAnswers = JSON.parse(data.toString());
 
-        parsedAnswers.forEach(data => {
-          manager.populateAnswers({ language: 'en', classifier: data.classifier, answer: data.answer })
-        })
+        parsedAnswers.forEach((parsedAnswer) => {
+          manager.populateAnswers({ language: "en", classifier: parsedAnswer.classifier, answer: parsedAnswer.answer });
+        });
 
-        resolve()
-      })
-    })
+        resolve();
+      });
+    });
   }
 
   private setupEntities = (manager: INaturalLanguageContract) => {
     return new Promise((resolve, reject) => {
-      readFile(join(__dirname, '..', 'data', 'entities.json'), {}, (err, data) => {
+      readFile(join(__dirname, "..", "data", "entities.json"), {}, (err, data) => {
         if (err) {
-          reject(err.message)
+          reject(err.message);
         }
 
-        const parsedEntities = JSON.parse(data.toString())
+        const parsedEntities = JSON.parse(data.toString());
 
-        parsedEntities.forEach(data => {
-          manager.populateEntities(data.entity['0'], data.entity['1'], data.entity['2'], data.entity['3'])
-        })
+        parsedEntities.forEach((parsedEntity) => {
+          manager.populateEntities(
+            parsedEntity.entity["0"],
+            parsedEntity.entity["1"],
+            parsedEntity.entity["2"],
+            parsedEntity.entity["3"],
+          );
+        });
 
-        resolve()
-      })
-    })
-  }
-
-  public setup = (manager: INaturalLanguageContract) => {
-    return new Promise(async (resolve, reject) => {
-      try {
-        await this.setupClassifications(manager)
-        await this.setupAnswers(manager)
-        await this.setupEntities(manager)
-
-        resolve()
-      } catch (err) {
-        reject(err.message)
-      }
-    })
+        resolve();
+      });
+    });
   }
 }

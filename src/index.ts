@@ -1,3 +1,3 @@
-import { AvaAIApi } from './app'
+import { AvaAIApi } from "./app";
 
-new AvaAIApi()
+const Ava = new AvaAIApi();
