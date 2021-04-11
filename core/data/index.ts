@@ -10,7 +10,7 @@ export class DataPrep {
         await this.setupAnswers(manager);
         await this.setupEntities(manager);
 
-        resolve();
+        resolve({});
       } catch (err) {
         reject(err.message);
       }
@@ -36,7 +36,7 @@ export class DataPrep {
           });
         });
 
-        resolve();
+        resolve({});
       });
     });
   }
@@ -54,7 +54,7 @@ export class DataPrep {
           manager.populateAnswers({ language: "en", classifier: parsedAnswer.classifier, answer: parsedAnswer.answer });
         });
 
-        resolve();
+        resolve({});
       });
     });
   }
@@ -70,14 +70,14 @@ export class DataPrep {
 
         parsedEntities.forEach((parsedEntity) => {
           manager.populateEntities(
-            parsedEntity.entity["0"],
-            parsedEntity.entity["1"],
-            parsedEntity.entity["2"],
-            parsedEntity.entity["3"],
+            parsedEntity.entity[ "0" ],
+            parsedEntity.entity[ "1" ],
+            parsedEntity.entity[ "2" ],
+            parsedEntity.entity[ "3" ],
           );
         });
 
-        resolve();
+        resolve({});
       });
     });
   }

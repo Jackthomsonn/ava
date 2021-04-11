@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ava-ai-310408",
+  "private_key_id": "2af647de14ce3b7d7b33eddf85bfacecb08e6e0f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDAR/vfaPhm/tCJ\nUGo2/92zPIaijtd7xcbjQUszDkLCf8piV+KfYWWrhHwKGUHR+DR+tWrwhXwx2yvz\nRWPlFsPIDS0BJiOtZvQHmRUrpkAW7i1ShnTNnuNNwHszYhhpObym9HduN7TFImnF\nvcE6lPKf6RByifUFKvxOat9yPYfr8tPGTVDsPRXmHgBIgBixFahLhZSXybLMBzgO\nxSmdE9gavYn7H8xL4W3Ji2hf5TA//bOtP386vlfif8WbIdmWXA3F77zdb5jGcuZo\na6+JDlrpIvMtZMjS/MhY7jwxOQebz+aFpCtR/QZJCQ3NgH6YMduqBMgI6aEYb8n3\ntf99OhyxAgMBAAECggEAAXwMy8rJsDHjdkvypf4PviSHfZXQwBnk0Thd1kUT6uCF\ntYCsNULRQCPDuWg8g9yAu0G3U6gUL2ZbzoMIpGoqlM7VPB8JQ3t6At0BttaPxB2O\nqAZ1vGivpJgJ23m0aouRk1Br46P2d1cureIrLcKcpPNttxStmZ6dWBWnKAClngK8\nhdeEbIQ2iH0FWdIJWm6BKSE5k+EbNP2hdUViwRPo1dkns6pyosWZhtQsCCrdkhs1\nG9OFqSM2xME+GcY8xtqhHJNC/RnmPjgWT6qCQ1cn1ed0O2iZqv1k0fndEnxny7tj\nVp8IGBJWXV5mB3E6Yc8yORMZvTwXk6T6j99RHLHMgQKBgQDobKMDgiGtvJN74NfE\niCq9yvFPRrqC6ZtHSzi+kI6eH84SFA7kY2+2KydJZSM8vA7IsWlAI1MNR+Fx/k9t\nL8DyjlTYlyeJu6Sq4PWKrA2+40L4VXWQGzycKAYN2/UBve5xJI14ayUJuU4Ysdr0\nISQaV3mtSvuft7nlYU2LudPNSQKBgQDTyPMFjjYyLdBqrswpbMi4GCmq9KJeYX3t\nRaa2tCcq7MY1t27bJgxhZN4ezsswvz06ZcNH3Uz7seKzOX0mB8quVsilWxTJKgGR\nqXMk8IWUZ19nsA0IWyJrProd921d1CzOawUiqObxlGdHJiQcqNkfScdneTVvzbXJ\n2UB94EhcKQKBgQDMmU1KulQhV15Q71WhGOjfF/YifjWTJkddlBcIkcIp6f+CJIwT\neoENUKGN120Uestc2ee34SCsETmhGmgayq3EF40S+MSCV18WWV9syhZzkiUS7E/I\nImHRaN4jdxwPg32RtcafWVpKXAgmbvI6c64PTi+7X8VvDNGk3Wng9R1AmQKBgAbN\naIjgJXt9Hzmd/a7C8LuBAy2bh++SIBJT72Pk63Ekg8VL7AKb+T/TlpLUv5AERHow\ntJIFWKio8Qgiq5NiIq9w2Cb/gu5nK/+6upkQJKo8m8Lf07tV+ggJzr6RqPCflQTY\nSSTw2eIeiyas4fINtlOb8gyvxvidWd5u3PRuFMTpAoGATwH5/GhTpJCdXnI7uDoO\nrDX8600cMwZOD0d8a14u3at5ySEq2ePgNFJ53sgsgfpiPg5bMhn/XUSmVFUghNnG\nBXv+atgX2FD0dOUx6ecylks1oTcoXJf8dev861mlXvknLpGcJsHsP1tZCv+OiQAD\naDXpU2Mi6UU7rDbDi3Kz9b4=\n-----END PRIVATE KEY-----\n",
+  "client_email": "ava-ai-speech@ava-ai-310408.iam.gserviceaccount.com",
+  "client_id": "115949067045660601855",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ava-ai-speech%40ava-ai-310408.iam.gserviceaccount.com"
+}

@@ -1,30 +1,21 @@
-import { AvaAIService } from "../modules/ava-ai/ava-ai";
-import { NodeNLPManagerImplementation } from "../modules/ava-ai/implementations/nodeNLPManagerImplementation";
-import { ISocketOptions } from "../modules/interfaces/ISocketOptions";
-import { PowerService } from "./../modules/ava-power-service/power-service";
+import { AvaAIService } from "../core/index";
+import { NodeNLPManagerImplementation } from "../core/implementations/nodeNLPManagerImplementation";
+import { ISocketOptions } from "../core/interfaces/ISocketOptions";
 
 export class SocketService {
-  private powerService: PowerService;
   private avaAIService: AvaAIService;
 
-  constructor(private io: SocketIO.Server) {
-    io.on("connection", (socket: SocketIO.Socket) => {
+  constructor(io: SocketIO.Server) {
+    io.on('connection', (socket: SocketIO.Socket) => {
       const socketOptions: ISocketOptions = { io, socket };
 
-      this.powerService = new PowerService(socketOptions);
-      this.avaAIService = new AvaAIService(
-        new NodeNLPManagerImplementation({
-          languages: "en",
-        }), socketOptions,
-      );
+      this.avaAIService = new AvaAIService(new NodeNLPManagerImplementation({ languages: 'en' }), socketOptions);
 
-      this.setupSocketEvents(socket);
+      this.analyseUtterance(socket);
     });
   }
 
-  private setupSocketEvents = (socket: SocketIO.Socket) => {
-    // socket.on("lights: get all lights", this.powerService);
-
-    socket.on("ava: analyse", this.avaAIService.analyse);
+  private analyseUtterance = (socket: SocketIO.Socket) => {
+    socket.on('ava: analyse', this.avaAIService.analyse);
   }
 }
