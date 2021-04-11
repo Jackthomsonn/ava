@@ -1,3 +1,3 @@
-import { AvaAIApi } from './app'
+import { AvaAI } from "./app";
 
-new AvaAIApi()
+new AvaAI();

@@ -1,31 +1,41 @@
-import * as Express from 'express'
-import * as http from 'http'
-import * as io from 'socket.io'
+import * as Express from "express";
+import * as http from "http";
+import * as io from "socket.io";
+import { SocketService } from "./socket";
+import { join } from 'path';
 
-import { SocketService } from './socket'
-
-export class AvaAIApi {
-  private server: http.Server
-  private io: SocketIO.Server
-  private app: Express.Application
+export class AvaAI {
+  private server: http.Server;
+  private io: SocketIO.Server;
+  private app: Express.Application;
 
   constructor() {
-    this.app = Express()
-    this.server = new http.Server(this.app)
+    this.app = Express();
+    this.app.use(Express.static(join(__dirname, '..', 'public')));
+    this.server = new http.Server(this.app);
+    this.setupSocketServer();
+    this.setupRoutes();
+    this.server.listen(8080);
+  }
 
-    this.io = io(this.server)
+  setupRoutes() {
+    this.app.get('/app', (req, res) => {
+      res.sendFile(join(__dirname, '..', 'public', 'index.html'));
+    });
 
-    new SocketService(this.io)
-
-    this.app.get('/', (_req, res) => {
+    this.app.get("/", (_req, res) => {
       res.status(200).send({
-        status: "healthy",
+        creator: "Jack Thomson",
         description: "Ava AI Assistant",
-        version: require('../package.json').version,
-        creator: "Jack Thomson"
-      })
-    })
+        status: "healthy",
+        version: require("../package.json").version,
+      });
+    });
+  }
 
-    this.server.listen(8080)
+  setupSocketServer() {
+    this.io = io(this.server);
+
+    new SocketService(this.io);
   }
 }
