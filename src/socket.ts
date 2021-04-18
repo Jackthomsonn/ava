@@ -11,11 +11,12 @@ export class SocketService {
 
       this.avaAIService = new AvaAIService(new NodeNLPManagerImplementation({ languages: 'en' }), socketOptions);
 
-      this.analyseUtterance(socket);
+      this.listen(socket);
     });
   }
 
-  private analyseUtterance = (socket: SocketIO.Socket) => {
+  private listen = (socket: SocketIO.Socket) => {
     socket.on('ava: analyse', this.avaAIService.analyse);
+    socket.on('ava: noticed', this.avaAIService.sayHello);
   }
 }

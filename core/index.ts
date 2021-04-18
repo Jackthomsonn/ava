@@ -6,6 +6,8 @@ import { writeFileSync } from 'fs';
 import { join } from "path";
 
 export class AvaAIService {
+  private client = new TextToSpeechClient();
+
   constructor(private brain: INaturalLanguageContract, private socketOptions: ISocketOptions) {
     this.initialise();
   }
@@ -16,13 +18,11 @@ export class AvaAIService {
 
     this.checkForValidActionEntitities(response, entities);
 
-    const client = new TextToSpeechClient();
-
     if (!response.answer) {
       response.answer = 'I could not generate a response for that, Jack';
     }
 
-    const [ content ] = await client.synthesizeSpeech({
+    const [ content ] = await this.client.synthesizeSpeech({
       input: { text: response.answer },
       voice: { languageCode: 'en-GB', ssmlGender: 'FEMALE', name: 'en-US-Wavenet-H' },
       audioConfig: { audioEncoding: 'OGG_OPUS' },
@@ -31,6 +31,18 @@ export class AvaAIService {
     writeFileSync(join(__dirname, '..', 'public', 'audio.mp3'), content.audioContent, { encoding: 'binary', flag: 'w' });
 
     this.socketOptions.socket.emit("nlu message", { response, entities });
+  }
+
+  public sayHello = async (name: string) => {
+    const [ content ] = await this.client.synthesizeSpeech({
+      input: { text: `Hello ${ name }` },
+      voice: { languageCode: 'en-GB', ssmlGender: 'FEMALE', name: 'en-US-Wavenet-H' },
+      audioConfig: { audioEncoding: 'OGG_OPUS' },
+    });
+
+    writeFileSync(join(__dirname, '..', 'public', 'audio.mp3'), content.audioContent, { encoding: 'binary', flag: 'w' });
+
+    this.socketOptions.socket.emit("nlu message", {});
   }
 
   private initialise = async () => {

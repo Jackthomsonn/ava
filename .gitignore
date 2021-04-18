@@ -5,3 +5,4 @@ model.nlp
 *.json
 
 **/*.js
+public/eyes/training_data

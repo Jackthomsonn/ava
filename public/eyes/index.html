@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+
+<head>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+  <script src="/socket.io/socket.io.js"></script>
+
+  <script src="face-api.js"></script>
+
+  <style>
+    #container {
+      margin: 0px auto;
+      width: 500px;
+      height: 375px;
+      border: 10px #333 solid;
+    }
+
+    #videoElement {
+      top: 0;
+      left: 0;
+      width: 500px;
+      height: 375px;
+      background-color: #666;
+    }
+
+    #overlay,
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas" class="overlay" width="500px" height="375px"></canvas>
+  <video autoplay="true" id="videoElement" width="500px" height="375px"></video>
+
+  <script>
+    const socket = io("http://localhost:8080");
+
+    socket.on('nlu message', () => {
+      const audio = new Audio(`../audio.mp3?${Math.random(0) * 36500000}`);
+
+      audio.play();
+    })
+
+    $(document).ready(function () {
+      let video = document.querySelector("#videoElement");
+      let currentStream;
+      let displaySize;
+      let hasGreeted;
+
+      if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+          .then(function (stream) {
+            video.srcObject = stream;
+          })
+          .catch(function (err0r) {
+            console.log("Something went wrong!");
+          });
+      }
+
+      let temp = []
+      $("#videoElement").bind("loadedmetadata", function () {
+        displaySize = { width: this.scrollWidth, height: this.scrollHeight }
+
+        async function detect() {
+          const MODEL_URL = '/core/models'
+
+          await faceapi.loadSsdMobilenetv1Model(MODEL_URL);
+          await faceapi.loadFaceLandmarkModel(MODEL_URL);
+          await faceapi.loadFaceRecognitionModel(MODEL_URL);
+
+          let canvas = $("#canvas").get(0);
+
+          facedetection = setInterval(async () => {
+            let fullFaceDescriptions = await faceapi.detectAllFaces(video).withFaceLandmarks().withFaceDescriptors()
+            let canvas = $("#canvas").get(0);
+            faceapi.matchDimensions(canvas, displaySize)
+
+            const fullFaceDescription = faceapi.resizeResults(fullFaceDescriptions, displaySize)
+            faceapi.draw.drawDetections(canvas, fullFaceDescriptions)
+
+            const labels = [
+              "jack1",
+              "katie1",
+            ];
+
+            const labeledFaceDescriptors = await Promise.all(
+              labels.map(async label => {
+                const imgUrl = `training_data/${label}.JPG`
+                const img = await faceapi.fetchImage(imgUrl)
+
+                const fullFaceDescription = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
+
+                if (!fullFaceDescription) {
+                  throw new Error(`no faces detected for ${label}`)
+                }
+
+                const faceDescriptors = [fullFaceDescription.descriptor]
+                return new faceapi.LabeledFaceDescriptors(label, faceDescriptors)
+              })
+            );
+
+            const maxDescriptorDistance = 0.6;
+            const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, maxDescriptorDistance)
+
+            const results = fullFaceDescriptions.map(fd => faceMatcher.findBestMatch(fd.descriptor))
+
+            results.forEach((bestMatch, i) => {
+              const box = fullFaceDescriptions[i].detection.box;
+              const text = bestMatch.toString();
+              const drawBox = new faceapi.draw.DrawBox(box, { label: text.replace(/[0-9]/g, '') });
+
+              drawBox.draw(canvas);
+
+              if (!hasGreeted && !text.includes('unknown')) {
+                socket.emit('ava: noticed', text.replace(/[0-9]/g, ''));
+                hasGreeted = true;
+                setTimeout(() => {
+                  hasGreeted = false;
+                }, 20000);
+              }
+            });
+          }, 300);
+        }
+
+        detect()
+      });
+    });
+  </script>
+</body>
+
+</html>
