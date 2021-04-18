@@ -14,3 +14,7 @@ git clone https://github.com/Jackthomsonn/ava.git
 cd <path-to-ava-repo>
 docker-compose up
 ```
+
+3. To test the speech aspect of Ava visit `http://localhost:8080/speech`
+
+4. To test the vision aspect of Ava visit `http://localhost:8080/vision`
