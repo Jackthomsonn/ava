@@ -16,6 +16,7 @@
     "express": "^4.16.4",
     "moment": "^2.22.2",
     "node-nlp": "^2.2.4",
+    "open": "^8.0.5",
     "request": "^2.88.2",
     "socket.io": "^2.4.0",
     "typescript": "^3.1.6"

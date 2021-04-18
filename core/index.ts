@@ -19,16 +19,16 @@ export class AvaAIService {
     const client = new TextToSpeechClient();
 
     if (!response.answer) {
-      response.answer = 'I could not generate a response for that Jack';
+      response.answer = 'I could not generate a response for that, Jack';
     }
 
     const [ content ] = await client.synthesizeSpeech({
       input: { text: response.answer },
-      voice: { languageCode: 'en-US', ssmlGender: 'FEMALE' },
-      audioConfig: { audioEncoding: 'LINEAR16' },
+      voice: { languageCode: 'en-GB', ssmlGender: 'FEMALE', name: 'en-US-Wavenet-H' },
+      audioConfig: { audioEncoding: 'OGG_OPUS' },
     });
 
-    writeFileSync(join(__dirname, '..', '..', 'public', 'audio.mp3'), content.audioContent, { encoding: 'binary', flag: 'w' });
+    writeFileSync(join(__dirname, '..', 'public', 'audio.mp3'), content.audioContent, { encoding: 'binary', flag: 'w' });
 
     this.socketOptions.socket.emit("nlu message", { response, entities });
   }
@@ -50,8 +50,11 @@ export class AvaAIService {
     }
   }
 
-  private determineActionToTake = (entities: any) => {
+  private determineActionToTake = async (entities: any) => {
     const [ location, subject ] = [ entities[ 0 ].entity, entities[ 1 ].entity ];
+
+    console.log(location)
+    console.log(subject);
 
     // We new up a module here depending on the subject and use the location to understand where in the house the device is
   }

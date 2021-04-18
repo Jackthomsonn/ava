@@ -1,5 +1,5 @@
 import { NerManager, NlpManager } from "node-nlp";
-import { INaturalLanguageContract } from "../../interfaces/INaturalLanguageProvider";
+import { INaturalLanguageContract } from "../interfaces/INaturalLanguageProvider";
 
 export class NodeNLPManagerImplementation implements INaturalLanguageContract {
   private agent: any;
