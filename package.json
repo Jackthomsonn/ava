@@ -3,12 +3,10 @@
   "version": "0.0.0",
   "description": "The Ava AI assistant",
   "scripts": {
-    "start": "ts-node-dev src/index",
-    "start:dev": "nodemon src/index",
+    "start": "ts-node-dev server/index",
+    "start:dev": "nodemon server/index",
     "build": "tsc",
-    "build:watch": "tsc -w",
-    "deploy": "now --docker",
-    "deploy-remove": "now rm ava-api && npm run deploy"
+    "build:watch": "tsc -w"
   },
   "author": "Jack Thomson <hello@jackthomson.co.uk> (http://www.jackthomson.co.uk)",
   "license": "ISC",

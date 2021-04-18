@@ -5,4 +5,5 @@ model.nlp
 *.json
 
 **/*.js
-public/eyes/training_data
+public/vision/training_data
+public/audio.mp3

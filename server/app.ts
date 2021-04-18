@@ -19,12 +19,12 @@ export class AvaAI {
   }
 
   setupRoutes() {
-    this.app.get('/eyes', (_req, res) => {
-      res.sendFile(join(__dirname, '..', 'public', 'eyes', 'index.html'));
+    this.app.get('/vision', (_req, res) => {
+      res.sendFile(join(__dirname, '..', 'public', 'vision', 'index.html'));
     });
 
-    this.app.get('/voice', (_req, res) => {
-      res.sendFile(join(__dirname, '..', 'public', 'voice', 'index.html'));
+    this.app.get('/speech', (_req, res) => {
+      res.sendFile(join(__dirname, '..', 'public', 'speech', 'index.html'));
     });
 
     this.app.use('/core/models', Express.static(join(__dirname, '..', 'core/models')));
